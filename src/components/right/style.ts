@@ -59,7 +59,8 @@ export const Boxcontainer = styled.div`
 
 export const Box = styled.div`
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    width: 500px;
 `;
 
 export const Date = styled.div`
@@ -71,5 +72,6 @@ export const Date = styled.div`
 `;
 
 export const Security = styled.div`
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
 `;

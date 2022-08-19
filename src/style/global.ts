@@ -12,6 +12,14 @@ export default createGlobalStyle`
     } 
     html {
         font-size: 62.5%;
+        overflow-x: hidden;
+
+        @media screen and (max-width:768px){
+            font-size: 55%;
+        }
+        @media screen and (max-width:450px){
+            font-size: 50%;
+        }
     }
     body {
         font-size: 1.8rem;

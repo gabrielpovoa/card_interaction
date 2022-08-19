@@ -56,9 +56,11 @@ export const Right = () => {
           <input type="number" value={state.cardNumber} placeholder="e.g. 1234 5678 9123 0000" onChange={handleCardNumber} />
           <Box>
             <Date>
-              <label>exp. date (mm/yy)</label>
-              <input type="text" value={state.cardMonth} onChange={handleMonth} placeholder="MM" />
-              <input type="text" value={state.cardYear} onChange={handleYear} placeholder="YY" />
+              <div className="inputs">
+                <label>exp. date (mm/yy)</label>
+                <input type="text" value={state.cardMonth} onChange={handleMonth} className="month" placeholder="MM" />
+                <input type="text" value={state.cardYear} onChange={handleYear} placeholder="YY" className="year" />
+              </div>
             </Date>
 
             <Security>
@@ -66,7 +68,7 @@ export const Right = () => {
               <input type="number" value={state.cvcCode} onChange={handleSecurity} placeholder="123" />
             </Security>
           </Box>
-            <input type="button" value="confirm" className="btn"  />
+          <input type="button" value="confirm" className="btn" />
         </Boxcontainer>
       </Form>
     </Container>
