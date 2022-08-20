@@ -1,8 +1,13 @@
 import React, { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Formactions, useForm } from "../../contexts/formContenxt";
+import { Modal } from "../modal";
 import { Container, Form, Boxcontainer, Box, Date, Security } from "./style";
 
 export const Right = () => {
+  const navigate = useNavigate()
+  const [openModal, setOpenModal] = useState(false)
+
   const [card, setCardnumber] = useState(0)
   const [cardName, setCardName] = useState('')
   const [month, setMonth] = useState('')
@@ -46,6 +51,14 @@ export const Right = () => {
     })
   }
 
+  const goModel = () => {
+    if(state.name !== '' && state.cardNumber !== 0 && state.cardMonth !== '' && state .cardYear !== '' && state.cvcCode !== 0) {
+      navigate('/model')
+    } else {
+      alert('You need to fill tou the fields')
+    }
+  }
+
   return (
     <Container>
       <Form method="GET">
@@ -68,7 +81,16 @@ export const Right = () => {
               <input type="number" value={state.cvcCode} onChange={handleSecurity} placeholder="123" />
             </Security>
           </Box>
-          <input type="button" value="confirm" className="btn" />
+          {
+            state.cardNumber == 0 && state.cardMonth == '' && state.cardYear == '' && state.cvcCode == 0 && state.name == '' &&
+            <input type="button" value="confirm" className="btn" style={{cursor: 'not-allowed'}}/>
+          }
+          {
+            state.cardNumber !== 0 && state.cardMonth !== '' && state.cardYear !== '' && state.cvcCode !== 0 && state.name !== '' &&
+            <>
+            <input type="button" value="confirm" className="btn" onClick={goModel}/>
+            </>
+          }
         </Boxcontainer>
       </Form>
     </Container>
